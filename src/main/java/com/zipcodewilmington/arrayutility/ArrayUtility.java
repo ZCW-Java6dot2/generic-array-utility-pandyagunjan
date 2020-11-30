@@ -1,6 +1,7 @@
 package com.zipcodewilmington.arrayutility;
 
 //import javax.swing.*;
+import javax.swing.*;
 import java.util.*;
 
 /**
@@ -66,12 +67,29 @@ public class ArrayUtility<T> {
             }
         }
         return count;
-
-
-
     }
 
+    public T getMostCommonFromMerge(T[] arrayToMerge)
+    {
+        List<T> valueList = new ArrayList<>();
+        int currentCounter=0;
+        int compareCounter=0;
+        T currentObject=null;
+        valueList.addAll(Arrays.asList(arrayToMerge));
+        valueList.addAll(Arrays.asList(array));
+        for(int i=0 ; i <valueList.size();i++) {
+           compareCounter=Collections.frequency(valueList, valueList.get(i));
+           if(compareCounter > currentCounter)
+           {
+               currentCounter=compareCounter;
+               currentObject=valueList.get(i);
+           }
 
+        }
+
+        return currentObject;
+
+    }
 
 
 }
